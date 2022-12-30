@@ -1,0 +1,13 @@
+{
+  "resourceName": "amppari",
+  "policyUUID": "524577a6",
+  "bucketName": "bukee",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "groupAccess": {}
+}
