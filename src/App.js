@@ -21,6 +21,7 @@ import {
 
 const App = ({ signOut }) => {
     const [notes, setNotes] = useState([]);
+    const [lokaali, setLokaali] = useState([]);
 
     useEffect(() => {
         fetchNotes();
@@ -103,8 +104,17 @@ const App = ({ signOut }) => {
             </View>
             <Heading level={2}>Current Notes</Heading>
             <View margin="3rem 0">
+                Change sort locale
+                <select name="lokaali" onChange={(e) => (
+                    setLokaali(e.target.value) && fetchNotes()
+                )}>
+                    <option></option>
+                    <option>fi</option>
+                    <option>en</option>
+                </select>
+                {lokaali}
                 {notes.sort((a, b) => (
-                    a.name.localeCompare(b.name, 'fi') !== 0 ? a.name.localeCompare(b.name, 'fi') : a.description.localeCompare(b.description, 'fi')
+                    a.name.localeCompare(b.name, lokaali) !== 0 ? a.name.localeCompare(b.name, lokaali) : a.description.localeCompare(b.description, lokaali)
                 )).map((note) => (
                     <Flex
                         key={note.id || note.name}
