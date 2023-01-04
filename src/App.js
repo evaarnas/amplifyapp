@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import getUserLocale from 'get-user-locale';
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
 import { API, Storage } from 'aws-amplify';
@@ -108,11 +109,11 @@ const App = ({ signOut }) => {
                 <select name="lokaali" onChange={(e) => (
                     setLokaali(e.target.value) && fetchNotes()
                 )}>
-                    <option></option>
+                    <option value={ getUserLocale() }></option>
                     <option>fi</option>
                     <option>en</option>
                 </select>
-                {lokaali}
+                {lokaali} (default: {getUserLocale()})
                 {notes.sort((a, b) => (
                     a.name.localeCompare(b.name, lokaali) !== 0 ? a.name.localeCompare(b.name, lokaali) : a.description.localeCompare(b.description, lokaali)
                 )).map((note) => (
