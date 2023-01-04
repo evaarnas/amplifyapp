@@ -104,7 +104,7 @@ const App = ({ signOut }) => {
             <Heading level={2}>Current Notes</Heading>
             <View margin="3rem 0">
                 {notes.sort((a, b) => (
-                    a.name.localeCompare(b.name) !== 0 ? a.name.localeCompare(b.name) : a.description.localeCompare(b.description)
+                    a.name.localeCompare(b.name, 'fi') !== 0 ? a.name.localeCompare(b.name, 'fi') : a.description.localeCompare(b.description, 'fi')
                 )).map((note) => (
                     <Flex
                         key={note.id || note.name}
